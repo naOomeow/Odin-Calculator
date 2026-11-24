@@ -98,15 +98,15 @@ function CALCULATE() {
 
 };
 equalBtn.addEventListener(`click`, () => {
-    if (operatorIn === `/` && input2 === 0) {
+    if (operatorIn === `/` && input2 === 0 && inputArr.length > 0) {
         outputDisp.textContent = `Err Are you sure you can do that?`;
         CLEAR();
         return;
-    } else {
+    } else if(inputArr.length !== 0 ){
         CALCULATE();
         inputArr = [];
-        operatorIn = '';
-    }
+        console.log(`prevented unusual activty`)
+    };
     
     UPDATE_DISPLAY();
 });

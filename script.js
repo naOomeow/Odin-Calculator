@@ -1,14 +1,24 @@
+//variables
+let inputArr = []; 
+let input1 = 0;
+let input2 = 0;
+
 const outputDisp = document.querySelector(`#output`);
 const inputDisp = document.querySelector(`#input`);
+
+const equalBtn = document.querySelector(`#equal`);
+const clearBtn = document.querySelector(`#clear`);
 
 const numButtons = document.querySelectorAll(`.num-button`);
 const numButtonArr = Array.from(numButtons);
 // console.log(numButtonArr);
-numButtonArr.forEach((button) => button.addEventListener((`click`), (e) => {
-    const num = parseInt(e.target.textContent);
-    console.log(num);
-}));
 
+
+function GET_INPUT(arr) {
+    let joined = arr.join(``);
+    return parseInt(joined);
+}
+//Arethmetics
 function ADD(a, b) {
     return a + b;
 };
@@ -29,24 +39,31 @@ function EXP(a, b) {
     return a ** b;
 };
 
-
+//update Display
 function UPDATE_DISPLAY() {
     console.log(`display updated`);
 };
 
-const equalBtn = document.querySelector(`#equal`);
+//equal function
 function CALCULATE() {
     console.log(`CALCULATING`);
+
 };
 equalBtn.addEventListener(`click`, () => {
     CALCULATE();
     UPDATE_DISPLAY();
 })
-
-const clearBtn = document.querySelector(`#clear`);
+//clear button
 function CLEAR() {
     console.log(`Cleared`);
 };
 clearBtn.addEventListener(`click`, () => {
     CLEAR();
 })
+
+numButtonArr.forEach((button) => button.addEventListener((`click`), (e) => {
+    const num = parseInt(e.target.textContent);
+    inputArr.push(num);
+    let input = GET_INPUT(inputArr);
+    console.log(input);
+}));

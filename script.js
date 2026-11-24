@@ -31,14 +31,22 @@ function EXP(a, b) {
 
 
 function UPDATE_DISPLAY() {
-    
+    console.log(`display updated`);
 };
 
-
+const equalBtn = document.querySelector(`#equal`);
 function CALCULATE() {
-    
+    console.log(`CALCULATING`);
 };
+equalBtn.addEventListener(`click`, () => {
+    CALCULATE();
+    UPDATE_DISPLAY();
+})
 
+const clearBtn = document.querySelector(`#clear`);
 function CLEAR() {
-    
+    console.log(`Cleared`);
 };
+clearBtn.addEventListener(`click`, () => {
+    CLEAR();
+})

@@ -49,6 +49,13 @@ function UPDATE_DISPLAY() {
     console.log(input1);
     console.log(operatorIn);
     console.log(input2);
+
+    inputDisp.textContent = `${input1}`;
+    inputDisp.textContent += `${operatorIn}`;
+    if (operatorIn !== `` && inputArr.length !== 0) {
+        inputDisp.textContent += `${input2}`;    
+    };
+    outputDisp.textContent = input1;
 };
 
 //equal function
@@ -84,18 +91,25 @@ function CALCULATE() {
             let answer = EXP(input1, input2);
             input1 = answer;
             input2 = 0;
-            break;            
-        }
-    }
+            break;
+        };
+    };
     
 
 };
 equalBtn.addEventListener(`click`, () => {
-    CALCULATE();
-    inputArr = [];
-    operatorIn = '';
+    if (operatorIn === `/` && input2 === 0) {
+        outputDisp.textContent = `Err Are you sure you can do that?`;
+        CLEAR();
+        return;
+    } else {
+        CALCULATE();
+        inputArr = [];
+        operatorIn = '';
+    }
+    
     UPDATE_DISPLAY();
-})
+});
 //clear button
 function CLEAR() {
     console.log(`Cleared`);
@@ -124,6 +138,11 @@ numButtonArr.forEach((button) => button.addEventListener((`click`), (e) => {
 
 opButtonsArr.forEach((button) => button.addEventListener(`click`, (e) => {
     let op = e.target.textContent;
+    if (operatorIn === '/' && input2 === 0 && inputArr.length > 0) {
+        outputDisp.textContent = `Err Are you sure you can do that?`;
+        CLEAR();
+        return;
+    }
     if (inputArr.length === 0) {
         operatorIn = op;
         inputArr = [];
